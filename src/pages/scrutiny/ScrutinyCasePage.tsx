@@ -10,7 +10,8 @@ import type { Defect } from '@/store/types';
 type Decision = 'approve' | 'defective' | 'reject' | null;
 
 export default function ScrutinyCasePage() {
-  const { caseId } = useParams();
+  const { caseId: _caseId } = useParams();
+  const caseId = _caseId ? decodeURIComponent(_caseId) : undefined;
   const navigate = useNavigate();
   const filing = useAppStore(s => s.filings.find(f => f.id === caseId));
   const checklist = useAppStore(s => s.checklist);

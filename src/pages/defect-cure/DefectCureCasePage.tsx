@@ -7,7 +7,8 @@ import { ArrowLeft, CheckCircle2, RotateCcw, XCircle, AlertTriangle } from 'luci
 import { toast } from 'sonner';
 
 export default function DefectCureCasePage() {
-  const { caseId } = useParams();
+  const { caseId: _caseId } = useParams();
+  const caseId = _caseId ? decodeURIComponent(_caseId) : undefined;
   const navigate = useNavigate();
   const filing = useAppStore(s => s.filings.find(f => f.id === caseId));
   const resolveDefect = useAppStore(s => s.resolveDefect);
