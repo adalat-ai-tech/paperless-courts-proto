@@ -32,7 +32,8 @@ const DEFAULT_SECTIONS: DocumentSection[] = [
 ];
 
 export default function PreparationCasePage() {
-  const { caseId } = useParams();
+  const { caseId: _caseId } = useParams();
+  const caseId = _caseId ? decodeURIComponent(_caseId) : undefined;
   const navigate = useNavigate();
   const filing = useAppStore(s => s.filings.find(f => f.id === caseId));
   const updateFiling = useAppStore(s => s.updateFiling);

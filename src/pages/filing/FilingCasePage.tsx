@@ -6,7 +6,8 @@ import { ArrowLeft, FileText, User, CheckCircle2 } from 'lucide-react';
 import { toast } from 'sonner';
 
 export default function FilingCasePage() {
-  const { caseId } = useParams();
+  const { caseId: _caseId } = useParams();
+  const caseId = _caseId ? decodeURIComponent(_caseId) : undefined;
   const navigate = useNavigate();
   const filing = useAppStore(s => s.filings.find(f => f.id === caseId));
   const updateFiling = useAppStore(s => s.updateFiling);

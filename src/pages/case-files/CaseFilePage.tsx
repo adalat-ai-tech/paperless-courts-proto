@@ -17,7 +17,8 @@ const STATE_LABELS: Record<string, { label: string; cls: string }> = {
 };
 
 export default function CaseFilePage() {
-  const { caseId } = useParams();
+  const { caseId: _caseId } = useParams();
+  const caseId = _caseId ? decodeURIComponent(_caseId) : undefined;
   const navigate = useNavigate();
   const filing = useAppStore(s => s.filings.find(f => f.id === caseId));
 

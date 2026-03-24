@@ -30,7 +30,7 @@ export const ROUTE_PATTERNS = {
 } as const;
 
 function p(pattern: string, params: Record<string, string>) {
-  return Object.entries(params).reduce((s, [k, v]) => s.replace(`:${k}`, v), pattern);
+  return Object.entries(params).reduce((s, [k, v]) => s.replace(`:${k}`, encodeURIComponent(v)), pattern);
 }
 
 export const routes = {

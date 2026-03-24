@@ -6,7 +6,8 @@ import { ArrowLeft, Upload, CheckCircle2, FileText } from 'lucide-react';
 import { toast } from 'sonner';
 
 export default function ScanningCasePage() {
-  const { id } = useParams();
+  const { id: _id } = useParams();
+  const id = _id ? decodeURIComponent(_id) : undefined;
   const navigate = useNavigate();
   const filing = useAppStore(s => s.filings.find(f => f.id === id));
   const updateFiling = useAppStore(s => s.updateFiling);
